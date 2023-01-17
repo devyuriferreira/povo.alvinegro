@@ -1,0 +1,141 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Source+Sans+Pro:wght@300&display=swap');
+
+* {
+    font-family:sans-serif;
+}
+
+:root {
+    --font01-:'Lilita One', cursive;
+    --font02-:'Source Sans Pro', sans-serif;
+}
+
+body, ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-family: var(--font02-);
+    font-weight: 400;
+    padding: 1px;
+}
+
+a:hover {
+    background: rgba(100, 100, 100, 0.356);
+    transition: .4s;
+}
+
+#logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+    font-family: var(--font01-);
+    
+}
+
+#header {
+    background-color: #000;
+    box-sizing: border-box;
+    height: 70px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 1px 1px 10px gray; /*flex box */
+}
+
+#menu {
+    display: flex;
+    list-style: none;
+    gap: .5rem;
+}
+
+
+#menu a {
+    display: block;
+    padding: .5rem;
+    font-weight: 400;
+    font-size: 1.1rem;
+}
+
+#btn-mobile {
+    display: none;
+}
+
+
+@media screen and (max-width: 600px) {
+   
+
+
+    #menu {
+        display: block;
+        position: absolute;
+        width: 100%;
+        top: 70px;
+        right: 0px;
+        background-color: #000000;
+        height: 0;
+        transition: .6s;
+        visibility: hidden;
+        z-index: 1000;
+        overflow-y: hidden;
+       
+    }
+
+    #nav.active #menu {
+        height: calc(100vh - 70px);
+        visibility: visible;
+        overflow-y: auto;
+    }
+
+    #menu a {
+        padding: 1rem 0;
+        margin: 0 1rem;
+    }
+
+    #btn-mobile {
+        color: white;
+        display: flex;
+        padding: .5rem 1rem;
+        font-size: 1rem;
+        border: none;
+        background: none;
+        cursor: pointer;
+        gap: .5rem;
+       
+    }
+
+    #burguer {
+        display: block;
+        width: 20px;
+        border-top: 2px solid;
+    }
+
+    #burguer::after, #burguer::before{
+        content: ''; /* criando um conteudo vazio para que seja criado o hamburguer */
+        display: block; 
+        width: 20px;
+        height: 2px;
+        background: white; 
+        margin-top: 5px;
+        transition: .3s;
+        position: relative;
+    }
+
+    #nav.active #burguer {
+        border-top-color:transparent; /*escondendo uma das linhas */
+    }
+
+
+    #nav.active #burguer::before {
+        transform: rotate(135deg); /* alinhando a primeira linha com a segunda linha */
+    }
+
+    #nav.active #burguer::after { /* movimento para a segunda linha */
+        transform: rotate(-135deg); /* alinhanndo a segunda linha do menu com a primeira */
+        top: -7px; /* alinhando o menu */
+    }
+}
